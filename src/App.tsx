@@ -1,34 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Header } from './components/Header'
+import { Patient } from './components/Patient';
+import { PetForm } from './components/PetForm';
+import { useDatePet } from './hooks/useDatePet'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const { registerPet, listPet, editDate, setEditDate, deleteDatePet, editDatePet } = useDatePet();
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container mx-auto">
+      <Header />
+      <div className=" flex flex-col sm:flex-row">
+        <div className="ml-8 mr-3 sm:w-1/2 ">
+          <PetForm registerPet={registerPet} editDate={editDate} editDatePet={editDatePet} setEditDate={setEditDate} />
+        </div>
+        <div className="ml-8 mr-3 sm:w-1/2 ">
+          <Patient listPet={listPet} setEditDate={setEditDate} deleteDatePet={deleteDatePet} />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
