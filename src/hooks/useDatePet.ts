@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Pet } from "../types";
+import { toast } from "react-toastify";
 
 export const useDatePet = () => {
   const [listPet, setListPet] = useState<Pet[]>([]);
@@ -7,15 +8,35 @@ export const useDatePet = () => {
 
   const registerPet = (newPet: Pet): void => {
     setListPet([...listPet, newPet]);
+    toast.success("Registrado correctamente", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   const editDatePet = (pet: Pet) => {
-    //TODO
-    
+    const newDatePet = listPet.map((item) =>
+      item.id === editDate.id ? pet : item
+    );
+    setListPet(newDatePet);
+    toast.info("Actualizado correctamente", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const deleteDatePet = (id: string) => {
-    //TODO
-    
+    const deletePet = listPet.filter((item) => item.id !== id);
+    setListPet(deletePet);
   };
 
   return {
@@ -24,6 +45,6 @@ export const useDatePet = () => {
     editDate,
     setEditDate,
     editDatePet,
-    deleteDatePet
+    deleteDatePet,
   };
 };

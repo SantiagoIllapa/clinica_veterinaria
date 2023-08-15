@@ -1,4 +1,5 @@
 import { Pet } from "../types";
+import { PetList } from "./PetList";
 
 interface Props {
   listPet: Pet[];
@@ -18,7 +19,9 @@ export const Patient = ({ listPet, setEditDate, deleteDatePet }: Props) => {
             Administra tus{" "}
             <span className="text-zinc-600 font-bold "> pacientes y citas</span>
           </p>
-          
+          {listPet.map(date => (
+            <PetList date={date} key={date.id} setEditDate={setEditDate} deleteDatePet={deleteDatePet} />
+          ))}
         </>
       ) : (
         <>

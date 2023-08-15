@@ -4,13 +4,18 @@ import { generateId } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 
 interface Props {
-    registerPet:(pet: Pet) => void
-    editDate: Pet
-    editDatePet: (pet: Pet) => void,
-    setEditDate: (pet: Pet) => void
+  registerPet: (pet: Pet) => void;
+  editDate: Pet;
+  editDatePet: (pet: Pet) => void;
+  setEditDate: (pet: Pet) => void;
 }
 
-export const PetForm = ({registerPet, editDate, editDatePet, setEditDate}: Props) => {
+export const PetForm = ({
+  registerPet,
+  editDate,
+  editDatePet,
+  setEditDate,
+}: Props) => {
   const [pet, setPet] = useState<Pet>({
     id: generateId(),
     namePet: "",
@@ -33,14 +38,16 @@ export const PetForm = ({registerPet, editDate, editDatePet, setEditDate}: Props
     error,
   } = pet;
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (Object.keys(editDate).length > 0) {
       setPet(editDate);
     }
     console.log(editDate);
-  }, [editDate])*/
+  }, [editDate]);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setPet({
       ...pet,
       [event.target.name]: event.target.value,
@@ -74,13 +81,13 @@ export const PetForm = ({registerPet, editDate, editDatePet, setEditDate}: Props
       ...pet,
       error: false,
     });
-    registerPet(pet);
-    /*if (editDate.id) {
+
+    if (editDate.id) {
       editDatePet(pet);
       setEditDate({} as Pet);
     } else {
-      
-    }*/
+      registerPet(pet);
+    }
 
     setPet({
       ...pet,
