@@ -2,14 +2,20 @@ import { Header } from './components/Header'
 import { Patient } from './components/Patient';
 import { PetForm } from './components/PetForm';
 import { useDatePet } from './hooks/useDatePet'
-
+import Cookies from 'universal-cookie';
+const baseUrl = "http://localhost:3000/users"
+const cookies = new Cookies();
 function App() {
 
   const { registerPet, listPet, editDate, setEditDate, deleteDatePet, editDatePet } = useDatePet();
-
+  
   return (
+
     <div className="container mx-auto">
       <Header />
+      <div>
+      <h1>Bienvenido {cookies.get('Name')}</h1>
+      </div>
       <div className=" flex flex-col sm:flex-row">
         <div className="ml-8 mr-3 sm:w-1/2 ">
           <PetForm registerPet={registerPet} editDate={editDate} editDatePet={editDatePet} setEditDate={setEditDate} />

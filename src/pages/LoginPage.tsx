@@ -1,9 +1,52 @@
+import {Component} from 'react';
 import { Link } from "react-router-dom"
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+const baseUrl="http://localhost:3000/users"
+const cookies= new Cookies();
+class LoginPage extends Component{
 
-export const LoginPage = () => {
-    return (
-        <>
-         <div className="font-sans">
+  state={
+    form:{
+      email:"",
+      password:""
+    }
+  }
+  handleChange= async (e: { target: { name: any; value: any; }; })=>{
+    await this.setState({
+      form:{
+        ...this.state.form,
+        [e.target.name]:e.target.value
+      }
+
+    });
+  }
+  iniciarSesion= async()=>{
+    await  axios.get(baseUrl,{params:{
+      email: this.state.form.email,
+      password: this.state.form.password
+    }}).then(response=>{
+      console.log(response);
+      return response.data;
+    })
+    .then(response=>{
+      if(response.length>0){
+        var respuesta=response[0];
+        cookies.set('Name',respuesta.name,{path:"/"})
+        cookies.set('Email',respuesta.email,{path:"/"})
+        window.location.href="./pets"
+      }else{
+        alert("El usuario o la contraseña son incorrectas")
+      }
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+  render(){
+
+  return (
+    <>
+      <div className="font-sans">
         <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
           <div className="relative sm:max-w-sm w-full">
             <div className="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
@@ -18,17 +61,21 @@ export const LoginPage = () => {
               <form method="#" action="#" className="mt-10">
                 <div>
                   <input
+                    name='email'
                     type="email"
                     placeholder="Correo electronico"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                    onChange={this.handleChange}
                   />
                 </div>
 
                 <div className="mt-7">
                   <input
+                    name='password'
                     type="password"
                     placeholder="Contraseña"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                    onChange={this.handleChange}
                   />
                 </div>
 
@@ -59,9 +106,9 @@ export const LoginPage = () => {
                 </div>
 
                 <div className="mt-7">
-                  <Link to="/pets" className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                  <button onClick={()=>this.iniciarSesion()} className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                     Login
-                  </Link>
+                  </button>
                 </div>
 
                 <div className="mt-7">
@@ -80,6 +127,8 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  )
 }
+}
+export default LoginPage;
