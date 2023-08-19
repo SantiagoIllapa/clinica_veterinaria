@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Pet } from "../types";
 
 interface Props {
@@ -30,13 +31,13 @@ export const PetList = ({ date, setEditDate, deleteDatePet }: Props) => {
           <span className="font-normal normal-case"> {date.symptoms}</span>
         </p>
         <div className="flex flex-col sm:justify-between sm:flex-row mt-10">
-          <button
-            type="button"
+          <Link
+            to="/register-pets"
             className="py-2 px-10 mr-2 bg-gray-600 hover:bg-gray-500 text-white font-bold uppercase rounded-lg"
             onClick={() => setEditDate(date)}
           >
             Editar
-          </button>
+          </Link>
           <button
             type="button"
             className="py-2 px-10 bg-red-600 mr-2 hover:bg-red-700 text-white font-bold uppercase rounded-lg"

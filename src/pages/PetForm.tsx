@@ -2,20 +2,10 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Pet } from "../types";
 import { generateId } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
+import { usePet } from "../hooks/usePet";
+import { Header } from "../components/Header";
 
-interface Props {
-  registerPet: (pet: Pet) => void;
-  editDate: Pet;
-  editDatePet: (pet: Pet) => void;
-  setEditDate: (pet: Pet) => void;
-}
-
-export const PetForm = ({
-  registerPet,
-  editDate,
-  editDatePet,
-  setEditDate,
-}: Props) => {
+export const PetForm = () => {
   const [pet, setPet] = useState<Pet>({
     id: generateId(),
     namePet: "",
@@ -37,6 +27,8 @@ export const PetForm = ({
     datePet,
     error,
   } = pet;
+
+  const { registerPet, editDate, editDatePet, setEditDate } = usePet();
 
   useEffect(() => {
     if (Object.keys(editDate).length > 0) {
@@ -102,8 +94,9 @@ export const PetForm = ({
     });
   };
   return (
-    <>
-      <h2 className="text-center font-bold">Formulario</h2>
+    <div className=" flex flex-col">
+      <Header />
+      <h2 className="text-center font-bold m-3">Formulario</h2>
       {error && (
         <ToastContainer
           position="top-right"
@@ -206,6 +199,6 @@ export const PetForm = ({
           Enviar
         </button>
       </form>
-    </>
+    </div>
   );
 };
