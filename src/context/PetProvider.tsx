@@ -3,6 +3,7 @@ import { PetContext } from "./PetContext";
 import { Pet } from "../types";
 import { toast } from "react-toastify";
 import { axiosClient } from "../services/api";
+import swal from "sweetalert";
 
 interface Props {
   children: ReactNode;
@@ -11,6 +12,7 @@ interface Props {
 export const PetProvider = ({ children }: Props) => {
   const [listPet, setListPet] = useState<Pet[]>([]);
   const [editDate, setEditDate] = useState<Pet>({} as Pet);
+  const [searchPet, setSearchPet] = useState<Pet>({} as Pet);
 
   const getPets =async ():Promise<void> => {
       const { data } = await axiosClient.get<Pet[]>("/data");
@@ -19,20 +21,12 @@ export const PetProvider = ({ children }: Props) => {
   
   useEffect(() => {
     getPets();
-  }, [listPet]);
+  }, []);
   const registerPet = async (newPet: Pet): Promise<void> => {
     try {
       await axiosClient.post("/data", newPet);
       setListPet([...listPet, newPet]);
-      toast.success("Registrado correctamente", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      swal("Cliente registrado!", `Tu código es: ${newPet.uniqueCode}`, "success");
     } catch (error) {
       console.error(error);
     }
@@ -67,6 +61,12 @@ export const PetProvider = ({ children }: Props) => {
       console.error(error);
     }
   };
+
+  const searchResultPet = (code:string):void => {
+    const resultSearchPet = listPet.find(item => item.uniqueCode === code);
+    setSearchPet(resultSearchPet as Pet);
+  }
+  
   return (
     <PetContext.Provider
       value={{
@@ -76,6 +76,8 @@ export const PetProvider = ({ children }: Props) => {
         setEditDate,
         editDatePet,
         deleteDatePet,
+        searchResultPet,
+        searchPet
       }}
     >
       {children}

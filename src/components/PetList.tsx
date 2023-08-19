@@ -23,6 +23,10 @@ export const PetList = ({ date, setEditDate, deleteDatePet }: Props) => {
           Email: <span className="font-normal normal-case"> {date.email}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 ">
+          Raza:{" "}
+          <span className="font-normal normal-case"> {date.breedPet}</span>
+        </p>
+        <p className="font-bold mb-3 text-gray-700 ">
           Fecha alta:{" "}
           <span className="font-normal normal-case"> {date.datePet}</span>
         </p>

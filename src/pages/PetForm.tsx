@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Pet } from "../types";
-import { generateId } from "../utils";
+import { generateId, generateUniqueCode } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 import { usePet } from "../hooks/usePet";
 import { Header } from "../components/Header";
@@ -15,6 +15,7 @@ export const PetForm = () => {
     email: "",
     symptoms: "",
     datePet: "",
+    uniqueCode: "",
     error: false,
   });
   const {
@@ -34,7 +35,6 @@ export const PetForm = () => {
     if (Object.keys(editDate).length > 0) {
       setPet(editDate);
     }
-    console.log(editDate);
   }, [editDate]);
 
   const handleChange = (
@@ -45,6 +45,8 @@ export const PetForm = () => {
       [event.target.name]: event.target.value,
     });
   };
+  
+  pet.uniqueCode = generateUniqueCode(pet);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -78,6 +80,7 @@ export const PetForm = () => {
       editDatePet(pet);
       setEditDate({} as Pet);
     } else {
+      console.log(pet.uniqueCode);
       registerPet(pet);
     }
 
@@ -91,10 +94,12 @@ export const PetForm = () => {
       email: "",
       symptoms: "",
       datePet: "",
+      uniqueCode: "",
+      error: false,
     });
   };
   return (
-    <div className=" flex flex-col">
+    <div className="flex flex-col">
       <Header />
       <h2 className="text-center font-bold m-3">Formulario</h2>
       {error && (
@@ -111,7 +116,7 @@ export const PetForm = () => {
         />
       )}
       <form
-        className="flex flex-col sm:flex-col w-full"
+        className="flex flex-col m-auto sm:flex-col w-full sm:w-1/2"
         onSubmit={handleSubmit}
       >
         <label htmlFor="namePet" className="font-bold">
@@ -194,7 +199,7 @@ export const PetForm = () => {
         />
         <button
           type="submit"
-          className=" font-bold uppercase bg-indigo-600 py-2 rounded-lg text-cyan-100 hover:bg-indigo-500 mt-3 mb-3"
+          className=" font-bold uppercase bg-indigo-500 py-2 rounded-lg text-cyan-100 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none mt-3 mb-3"
         >
           Enviar
         </button>

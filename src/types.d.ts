@@ -7,5 +7,6 @@ export interface Pet {
     email: string,
     symptoms: string,
     datePet: string,
+    uniqueCode: string,
     error: boolean,
 }

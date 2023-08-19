@@ -8,6 +8,8 @@ interface PetContextProps {
   editDatePet: (pet: Pet) => void;
   setEditDate: (pet: Pet) => void;
   deleteDatePet: (id:string) => void
+  searchResultPet: (code:string) => void
+  searchPet: Pet
 }
 
 export const PetContext = createContext({} as PetContextProps);
