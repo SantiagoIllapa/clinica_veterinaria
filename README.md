@@ -44,6 +44,12 @@ If you are developing a production application, we recommend updating the config
     tsconfigRootDir: __dirname,
    },
 ```
+# JSON Server
+## Start server
+```
+npx json-server --watch initialState.json
+```
+
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
