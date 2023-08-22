@@ -11,11 +11,35 @@
       "datePet": [
         {
           "dateEntry": "2023-08-23",
-          "dateLeaving" : "2023-08-23",
+          "dateLeaving": "2023-08-23",
           "observations": "Médicado con desparacitantes"
         }
       ],
       "uniqueCode": "milopet1",
+      "error": false
+    },
+    {
+      "id": "0.0m5vfffg7bwllmqwquu",
+      "namePet": "asd",
+      "agePet": "asd",
+      "breedPet": "asd",
+      "nameOwner": "asd",
+      "email": "robertoh@gmail.com",
+      "symptoms": "asds",
+      "datePet": "dadadasd",
+      "uniqueCode": "asd0.2uvl11gv2io",
+      "error": false
+    },
+    {
+      "id": "0.t1vfj9i76rdllmr10a3",
+      "namePet": "asd",
+      "agePet": "asd",
+      "breedPet": "asd",
+      "nameOwner": "asd",
+      "email": "robertoh@gmail.com",
+      "symptoms": "sadasd",
+      "datePet": "Ninguno",
+      "uniqueCode": "asd0.b53oahs2jr",
       "error": false
     }
   ]

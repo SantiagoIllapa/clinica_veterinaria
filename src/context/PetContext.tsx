@@ -1,15 +1,15 @@
 import { createContext } from "react";
-import { Pet } from "../types";
+import { Pet, RegisterPet } from "../types";
 
 interface PetContextProps {
-  listPet: Pet[];
+  listPet: RegisterPet[];
   registerPet: (pet: Pet) => void;
-  editDate: Pet;
+  editDate: RegisterPet;
   editDatePet: (pet: Pet) => void;
-  setEditDate: (pet: Pet) => void;
+  setEditDate: (pet: RegisterPet) => void;
   deleteDatePet: (id:string) => void
   searchResultPet: (code:string) => void
-  searchPet: Pet
+  searchPet: RegisterPet
 }
 
 export const PetContext = createContext({} as PetContextProps);

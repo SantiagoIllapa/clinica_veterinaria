@@ -1,4 +1,4 @@
-import { Pet } from "../types";
+import { Pet, RegisterPet } from "../types";
 
 export const generateId = (): string => {
     const random = Math.random().toString(36);
@@ -7,7 +7,7 @@ export const generateId = (): string => {
     return random + date;
 }
 
-export const generateUniqueCode = (pet:Pet) => {
+export const generateUniqueCode = (pet:RegisterPet | Pet) => {
     const random = Math.random().toString(32);
     const code = pet.namePet + random;
     return code;
