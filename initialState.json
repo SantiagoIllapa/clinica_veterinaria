@@ -8,14 +8,32 @@
       "nameOwner": "Robinson",
       "email": "robinson@gmail.com",
       "symptoms": "Vómito",
-      "datePet": [
-        {
-          "dateEntry": "2023-08-23",
-          "dateLeaving" : "2023-08-23",
-          "observations": "Médicado con desparacitantes"
-        }
-      ],
+      "datePet": "2023-08-23",
       "uniqueCode": "milopet1",
+      "error": false
+    },
+    {
+      "id": "0.8lsm9zu8cqfllmubjyi",
+      "namePet": "asd",
+      "agePet": "asd",
+      "breedPet": "asd",
+      "nameOwner": "ad",
+      "email": "ads@asd.c",
+      "symptoms": "asd",
+      "datePet": "2023-08-17",
+      "uniqueCode": "asd0.1vv9jqr7sa8",
+      "error": false
+    },
+    {
+      "id": "0.k067f6f25qllmuf4yq",
+      "namePet": "Pelusa",
+      "agePet": "6 meses",
+      "breedPet": "Mestizo",
+      "nameOwner": "Nayeli",
+      "email": "nayeli@gmail.com",
+      "symptoms": "Fiebre y no come",
+      "datePet": "2023-08-23",
+      "uniqueCode": "Pelusa0.461outltgbo",
       "error": false
     }
   ]
