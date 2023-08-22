@@ -8,68 +8,14 @@
       "nameOwner": "Robinson",
       "email": "robinson@gmail.com",
       "symptoms": "Vómito",
-      "datePet": "2023-08-23",
+      "datePet": [
+        {
+          "dateEntry": "2023-08-23",
+          "dateLeaving" : "2023-08-23",
+          "observations": "Médicado con desparacitantes"
+        }
+      ],
       "uniqueCode": "milopet1",
-      "error": false
-    },
-    {
-      "id": "0.ji0qkv82aqpllim5n2u",
-      "namePet": "qw",
-      "agePet": "sfsd",
-      "breedPet": "asd",
-      "nameOwner": "asd",
-      "email": "robertoh@gmail.com",
-      "symptoms": "asd",
-      "datePet": "2023-08-23",
-      "uniqueCode": "",
-      "error": false
-    },
-    {
-      "id": "0.skm5z9o5w39llimce2f",
-      "namePet": "asd",
-      "agePet": "asd",
-      "breedPet": "asd",
-      "nameOwner": "asd",
-      "email": "robertoh@gmail.com",
-      "symptoms": "1234",
-      "datePet": "2023-08-25",
-      "uniqueCode": "",
-      "error": false
-    },
-    {
-      "id": "0.x4tqarrvlcllimcn57",
-      "namePet": "asd",
-      "agePet": "asd",
-      "breedPet": "asd",
-      "nameOwner": "sdfsdf",
-      "email": "robertoh@gmail.com",
-      "symptoms": "wqeqwe",
-      "datePet": "2023-08-10",
-      "uniqueCode": "",
-      "error": false
-    },
-    {
-      "id": "0.asnx4s27haellimwkr7",
-      "namePet": "asd",
-      "agePet": "asd",
-      "breedPet": "asd",
-      "nameOwner": "asd",
-      "email": "robertoh@gmail.com",
-      "symptoms": "asda",
-      "datePet": "2023-08-10",
-      "uniqueCode": "",
-      "error": false
-    },
-    {
-      "id": "0.gioy17erocllin6tpj",
-      "namePet": "asd",
-      "agePet": "asd",
-      "breedPet": "asd",
-      "nameOwner": "asd",
-      "email": "robertoh@gmail.com",
-      "symptoms": "sdf",
-      "datePet": "2023-08-05",
-      "uniqueCode": "asd0.dohs5bcqrno",
       "error": false
     }
   ]
