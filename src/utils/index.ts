@@ -1,14 +1,14 @@
-import { Pet } from "../types";
+import { Pet } from "../interfaces/types";
 
 export const generateId = (): string => {
-    const random = Math.random().toString(36);
-    const date = Date.now().toString(36);
+  const random = Math.random().toString(36);
+  const date = Date.now().toString(36);
 
-    return random + date;
-}
+  return random + date;
+};
 
-export const generateUniqueCode = (pet:Pet) => {
-    const random = Math.random().toString(32);
-    const code = pet.namePet + random;
-    return code;
-}
+export const generateUniqueCode = (pet: Pet) => {
+  const random = Math.random().toString(32);
+  const code = pet.namePet + random;
+  return code;
+};
