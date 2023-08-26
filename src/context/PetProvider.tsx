@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { PetContext } from "./PetContext";
-import { Pet, RegisterPet } from "../types";
+import { Pet } from "../types";
 import { toast } from "react-toastify";
 import { axiosClient } from "../services/api";
 import swal from "sweetalert";
@@ -10,12 +10,12 @@ interface Props {
 }
 
 export const PetProvider = ({ children }: Props) => {
-  const [listPet, setListPet] = useState<RegisterPet[]>([]);
-  const [editDate, setEditDate] = useState<RegisterPet>({} as RegisterPet);
-  const [searchPet, setSearchPet] = useState<RegisterPet>({} as RegisterPet);
+  const [listPet, setListPet] = useState<Pet[]>([]);
+  const [editDate, setEditDate] = useState<Pet>({} as Pet);
+  const [searchPet, setSearchPet] = useState<Pet>({} as Pet);
 
   const getPets = async (): Promise<void> => {
-    const { data } = await axiosClient.get<RegisterPet[]>("/data");
+    const { data } = await axiosClient.get<Pet[]>("/data");
     setListPet(data);
   };
 
@@ -23,27 +23,9 @@ export const PetProvider = ({ children }: Props) => {
     getPets();
   }, []);
   const registerPet = async (newPet: Pet): Promise<void> => {
-    const pet = {
-      id: newPet.id,
-      namePet: newPet.namePet,
-      agePet: newPet.agePet,
-      breedPet: newPet.breedPet,
-      nameOwner: newPet.nameOwner,
-      email: newPet.email,
-      symptoms: newPet.symptoms,
-      datePet: [
-        {
-          dateEntry: newPet?.dateEntry,
-          dateLeaving: newPet?.dateLeaving,
-          observations: newPet?.observations,
-        },
-      ],
-      uniqueCode: newPet.uniqueCode,
-      error: newPet.error,
-    };
     try {
-      await axiosClient.post("/data", pet);
-      setListPet([...listPet, pet]);
+      await axiosClient.post("/data", newPet);
+      setListPet([...listPet, newPet]);
       swal(
         "Mascota registrada!",
         `Tu código es: ${newPet.uniqueCode}`,
@@ -60,7 +42,7 @@ export const PetProvider = ({ children }: Props) => {
       const newDatePet = listPet.map((item) =>
         item.id === editDate.id ? pet : item
       );
-      setListPet(newDatePet as RegisterPet[]);
+      setListPet(newDatePet as Pet[]);
       toast.info("Actualizado correctamente", {
         position: "top-center",
         autoClose: 3000,
@@ -87,7 +69,7 @@ export const PetProvider = ({ children }: Props) => {
 
   const searchResultPet = (code: string): void => {
     const resultSearchPet = listPet.find((item) => item.uniqueCode === code);
-    setSearchPet(resultSearchPet as RegisterPet);
+    setSearchPet(resultSearchPet as Pet);
   };
 
   return (

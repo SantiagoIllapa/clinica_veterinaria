@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Pet, RegisterPet } from "../types";
+import { Pet } from "../types";
 import { generateId, generateUniqueCode } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 import { usePet } from "../hooks/usePet";
@@ -14,7 +14,6 @@ export const PetForm = () => {
     nameOwner: "",
     email: "",
     symptoms: "",
-    datePet: "",
     dateEntry: "",
     dateLeaving: "",
     observations: "",
@@ -28,7 +27,9 @@ export const PetForm = () => {
     nameOwner,
     email,
     symptoms,
-    datePet,
+    dateEntry,
+    dateLeaving,
+    observations,
     error,
   } = pet;
 
@@ -56,9 +57,17 @@ export const PetForm = () => {
     event.preventDefault();
 
     if (
-      [namePet, agePet, breedPet, nameOwner, email, symptoms, datePet].includes(
-        ""
-      )
+      [
+        namePet,
+        agePet,
+        breedPet,
+        nameOwner,
+        email,
+        symptoms,
+        dateEntry,
+        dateLeaving,
+        observations,
+      ].includes("")
     ) {
       setPet({
         ...pet,
@@ -82,7 +91,7 @@ export const PetForm = () => {
 
     if (editDate.id) {
       editDatePet(pet);
-      setEditDate({} as RegisterPet);
+      setEditDate({} as Pet);
     } else {
       console.log(pet.uniqueCode);
       registerPet(pet);
@@ -97,13 +106,9 @@ export const PetForm = () => {
       nameOwner: "",
       email: "",
       symptoms: "",
-      datePet: [
-        {
-          dateEntry: "",
-          dateLeaving: "",
-          observations: "",
-        },
-      ],
+      dateEntry: "",
+      dateLeaving: "",
+      observations: "",
       uniqueCode: "",
       error: false,
     });
@@ -196,36 +201,36 @@ export const PetForm = () => {
           value={symptoms}
           onChange={handleChange}
         ></textarea>
-        <label htmlFor="datePet" className="font-bold">
+        <label htmlFor="dateEntry" className="font-bold">
           Fecha de entrada
         </label>
         <input
           type="date"
           className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
           placeholder="Fecha"
-          name={`${datePet[0].dateEntry}`}
-          value={datePet[0].dateEntry}
+          name="dateEntry"
+          value={dateEntry}
           onChange={handleChange}
         />
-        <label htmlFor="datePet" className="font-bold">
+        <label htmlFor="dateLeaving" className="font-bold">
           Fecha de salida
         </label>
         <input
           type="date"
           className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
           placeholder="Fecha"
-          name={`${datePet[0].dateLeaving}`}
-          value={datePet[0].dateLeaving}
+          name="dateLeaving"
+          value={dateLeaving}
           onChange={handleChange}
         />
-        <label htmlFor="datePet" className="font-bold">
+        <label htmlFor="observations" className="font-bold">
           Obervaciones médicas
         </label>
         <textarea
           className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-          placeholder="Fecha"
-          name={`${datePet[0].observations}`}
-          value={datePet[0].observations}
+          placeholder="Observaciones"
+          name="observations"
+          value={observations}
           onChange={handleChange}
         />
         <button

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Pet, RegisterPet } from "../types";
+import { Pet } from "../types";
 
 interface Props {
-  date: RegisterPet;
+  date: Pet;
   setEditDate: (pet: Pet) => void;
   deleteDatePet: (id: string) => void;
 }
@@ -28,7 +28,7 @@ export const PetList = ({ date, setEditDate, deleteDatePet }: Props) => {
         </p>
         <p className="font-bold mb-3 text-gray-700 ">
           Fecha alta:{" "}
-          <span className="font-normal normal-case"> {String(date.datePet[0].dateLeaving)}</span>
+          <span className="font-normal normal-case"> {String(date.datePet)}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 ">
           Síntomas:{" "}

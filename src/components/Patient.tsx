@@ -1,10 +1,10 @@
 import { usePet } from "../hooks/usePet";
-import { Pet, RegisterPet } from "../types";
+import { Pet } from "../types";
 import { PetList } from "./PetList";
 import { Search } from "./Search";
 
 interface Props {
-  listPet: RegisterPet[];
+  listPet: Pet[];
   setEditDate: (pet: Pet) => void;
   deleteDatePet: (id: string) => void;
 }
