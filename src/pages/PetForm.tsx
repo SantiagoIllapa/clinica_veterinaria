@@ -52,10 +52,10 @@ export const PetForm = () => {
 
   pet.uniqueCode = generateUniqueCode(pet);
   console.log(pet);
-
+  // Maneja el envío del formulario
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+  // Validación de campos obligatorios
     if (
       [
         namePet,
@@ -73,6 +73,7 @@ export const PetForm = () => {
         ...pet,
         error: true,
       });
+      // Muestra una notificación de advertencia
       toast.warn("Todos los campos son obligatorios", {
         position: "top-right",
         autoClose: 3000,
@@ -84,11 +85,14 @@ export const PetForm = () => {
       });
       return;
     }
+    
+    // Resetea el estado de error
     setPet({
       ...pet,
       error: false,
     });
 
+    // Manejo de actualización o registro de mascota
     if (editDate.id) {
       editDatePet(pet);
       setEditDate({} as Pet);
@@ -96,7 +100,7 @@ export const PetForm = () => {
       console.log(pet.uniqueCode);
       registerPet(pet);
     }
-
+    // Resetea el estado del formulario
     setPet({
       ...pet,
       id: generateId(),
