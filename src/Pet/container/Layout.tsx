@@ -1,17 +1,14 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../auth/context/AuthContext";
+
+
+import { UserDropdown } from "../components/UserDropdown";
+
 interface Props {
   children: ReactNode;
 }
 
 export const Layout = ({ children }: Props) => {
-  const { logout } = useContext(AuthContext);
-
-  const handleSignOut = () => {
-    logout();
-  };
 
   return (
     <>
@@ -59,12 +56,8 @@ export const Layout = ({ children }: Props) => {
             </div>
 
             <div className="hidden md:flex items-center space-x-1">
-              <button
-                onClick={handleSignOut}
-                className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
-              >
-                SignOut
-              </button>
+              
+              <UserDropdown />
             </div>
 
             <div className="md:hidden flex items-center">
