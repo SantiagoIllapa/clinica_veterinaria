@@ -17,33 +17,41 @@ export const RegisterPage = () => {
               </label>
               <form method="#" action="#" className="mt-10">
                 <div>
+                <label>Nombre</label>
                   <input
+                   style={{ padding: '10px' }}
                     type="text"
-                    placeholder="Nombres"
+                    placeholder="Pepito"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
                 <div className="mt-7">
+                <label>Email</label>
                   <input
+                   style={{ padding: '10px' }}
                     type="email"
-                    placeholder="Correo electronico"
+                    placeholder="ejemplo@gmail.com"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
                 <div className="mt-7">
+                <label>Contraseña</label>
                   <input
+                   style={{ padding: '10px' }}
                     type="password"
-                    placeholder="Contraseña"
+                    placeholder="********"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
                 <div className="mt-7">
+                <label>Confirmar contraseña</label>
                   <input
+                   style={{ padding: '10px' }}
                     type="password"
-                    placeholder="Confirmar contraseña"
+                    placeholder="********"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
