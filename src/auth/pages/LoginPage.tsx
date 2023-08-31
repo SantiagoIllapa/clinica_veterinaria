@@ -22,8 +22,16 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className="font-sans">
+      <div className="font-sans">                  
+                
         <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
+          {/* Encabezado */}
+          <header className="text-center mt-10">
+            <h1 className="text-3xl font-semibold">
+              Clínica Veterinaria "La Quinta Pata del Gato"
+            </h1>
+          </header>
+          <br/><br/>
           <div className="relative sm:max-w-sm w-full">
             <div className=" bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
             <div className=" bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
@@ -49,7 +57,7 @@ export const LoginPage = () => {
                 </div>
 
                 <div className="mt-7">
-                <label>Contraseña</label>
+                  <label>Contraseña</label>
                   <input
                     type="password"
                     placeholder="********"

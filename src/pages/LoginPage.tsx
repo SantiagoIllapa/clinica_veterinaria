@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 
 export const LoginPage = () => {
-    return (
-        <>
-         <div className="font-sans">
+  return (
+    <>
+      <div className="font-sans">
         <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
           <div className="relative sm:max-w-sm w-full">
             <div className="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
@@ -80,6 +80,6 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  )
 }
