@@ -1,20 +1,24 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
+
+import { UserDropdown } from "../components/UserDropdown";
+
 interface Props {
   children: ReactNode;
 }
 
 export const Layout = ({ children }: Props) => {
+
   return (
     <>
-      <nav className="bg-gray-100">
+      <nav className="bg-gray-100 w-full">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between">
             <div className="flex space-x-4">
               <div>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900"
                 >
                   <svg
@@ -25,14 +29,14 @@ export const Layout = ({ children }: Props) => {
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                     />
                   </svg>
                   <span className="font-bold">Quinta Pata</span>
-                </a>
+                </Link>
               </div>
 
               <div className="hidden md:flex items-center space-x-1">
@@ -52,15 +56,8 @@ export const Layout = ({ children }: Props) => {
             </div>
 
             <div className="hidden md:flex items-center space-x-1">
-              <a href="" className="py-5 px-3">
-                Login
-              </a>
-              <a
-                href=""
-                className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
-              >
-                Signup
-              </a>
+              
+              <UserDropdown />
             </div>
 
             <div className="md:hidden flex items-center">
@@ -73,9 +70,9 @@ export const Layout = ({ children }: Props) => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
@@ -93,10 +90,7 @@ export const Layout = ({ children }: Props) => {
           </a>
         </div>
       </nav>
-      <div className="container mx-auto">
-      {children}
-      </div>
-      
+      <div className="container mx-auto">{children}</div>
     </>
   );
 };

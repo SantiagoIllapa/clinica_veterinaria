@@ -4,6 +4,7 @@ import { generateId, generateUniqueCode } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 import { usePet } from "../hooks/usePet";
 import { Header } from "../components/Header";
+import { Layout } from "../container/Layout";
 
 export const PetForm = () => {
   const [pet, setPet] = useState<Pet>({
@@ -118,7 +119,8 @@ export const PetForm = () => {
     });
   };
   return (
-    <div className="flex flex-col">
+    <Layout>
+<div className="flex flex-col">
       <Header />
       <h1 className="text-center font-bold m-3" style={{ fontSize: '30px' }}>Formulario</h1>
       {error && (
@@ -247,5 +249,7 @@ export const PetForm = () => {
         </button>
       </form>
     </div>
+    </Layout>
+    
   );
 };

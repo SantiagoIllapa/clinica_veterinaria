@@ -1,6 +1,33 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom"
+import { UserLogin } from "../types";
+import { useAuth } from "../hooks/useAuth";
 
 export const LoginPage = () => {
+  const [userLogin, setUserLOgin] = useState<UserLogin>({
+    identifier: "",
+    password: "",
+  });
+
+  const { login } = useAuth();
+
+  const userLoginChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUserLOgin({
+      ...userLogin,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  //Logueo
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if ([userLogin.identifier, userLogin.password].includes("")) {
+      alert("Todos los campos son obligatorios");
+      return;
+    }
+    login(userLogin);
+  };
+
     return (
         <>
          <div className="font-sans">
@@ -15,11 +42,13 @@ export const LoginPage = () => {
               >
                 Login
               </label>
-              <form method="#" action="#" className="mt-10">
+              <form onSubmit={handleSubmit} className="mt-10">
                 <div>
                   <input
                     type="email"
+                    name="identifier"
                     placeholder="Correo electronico"
+                    onChange={userLoginChange}
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
@@ -27,41 +56,18 @@ export const LoginPage = () => {
                 <div className="mt-7">
                   <input
                     type="password"
+                    name="password"
+                    onChange={userLoginChange}
                     placeholder="Contraseña"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
-                <div className="mt-7 flex">
-                  <label
-                    htmlFor="remember_me"
-                    className="inline-flex items-center w-full cursor-pointer"
-                  >
-                    <input
-                      id="remember_me"
-                      type="checkbox"
-                      className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                      name="remember"
-                    />
-                    <span className="ml-2 text-sm text-gray-600">
-                      Recuerdame
-                    </span>
-                  </label>
-
-                  <div className="w-full text-right">
-                    <a
-                      className="underline text-sm text-gray-600 hover:text-gray-900"
-                      href="#"
-                    >
-                      ¿Olvidó su contraseña?
-                    </a>
-                  </div>
-                </div>
 
                 <div className="mt-7">
-                  <Link to="/register-pets" className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                  <button className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                     Login
-                  </Link>
+                  </button>
                 </div>
 
                 <div className="mt-7">

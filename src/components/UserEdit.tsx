@@ -32,6 +32,10 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({
 
     if (!formValues.firstName) {
       newErrors.firstName = true;
+      setFormValues({
+        ...formValues,
+        
+      })
     }
 
     if (!formValues.lastName) {

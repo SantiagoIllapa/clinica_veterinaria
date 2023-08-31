@@ -28,7 +28,11 @@ export const PetList = ({ date, setEditDate, deleteDatePet }: Props) => {
         </p>
         <p className="font-bold mb-3 text-gray-700 ">
           Fecha alta:{" "}
-          <span className="font-normal normal-case"> {String(date.datePet)}</span>
+          <span className="font-normal normal-case"> {String(date.dateEntry)}</span>
+        </p>
+        <p className="font-bold mb-3 text-gray-700 ">
+          Fecha alta:{" "}
+          <span className="font-normal normal-case"> {String(date.dateLeaving)}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 ">
           Síntomas:{" "}

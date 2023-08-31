@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { Register } from "../types";
+import { useAuth } from "../hooks/useAuth";
 
 export const RegisterPage = () => {
+  const [registerUser, setRegisterUser] = useState<Register>({
+    username: "",
+    email:"",
+    password:"",
+    direction:"",
+    specialty:"",
+    phone:""
+  });
+
+  const { register } = useAuth();
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setRegisterUser({
+      ...registerUser,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    register(registerUser)
+  }
+  
   return (
     <>
       <div className="font-sans">
@@ -15,11 +40,13 @@ export const RegisterPage = () => {
               >
                 Registrate
               </label>
-              <form method="#" action="#" className="mt-10">
+              <form onSubmit={handleSubmit} className="mt-10">
                 <div>
                   <input
                     type="text"
                     placeholder="Nombres"
+                    name="username"
+                    onChange={handleChange}
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
@@ -28,6 +55,8 @@ export const RegisterPage = () => {
                   <input
                     type="email"
                     placeholder="Correo electronico"
+                    onChange={handleChange}
+                    name="email"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
@@ -36,34 +65,44 @@ export const RegisterPage = () => {
                   <input
                     type="password"
                     placeholder="Contraseña"
+                    onChange={handleChange}
+                    name="password"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
                 <div className="mt-7">
                   <input
-                    type="password"
-                    placeholder="Confirmar contraseña"
+                    type="text"
+                    name="direction"
+                    placeholder="Dirección"
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                  />
+                </div>
+                <div className="mt-7">
+                  <input
+                    type="text"
+                    name="specialty"
+                    placeholder="Especialidad"
+                    onChange={handleChange}
+                    className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                  />
+                </div>
+                <div className="mt-7">
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="Teléfono"
+                    onChange={handleChange}
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                   />
                 </div>
 
                 <div className="mt-7">
-                  <Link to="/" className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                  <button type="submit" className="bg-blue-500 w-full py-3 px-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                     Registrar
-                  </Link>
-                </div>
-
-                <div className="mt-7">
-                  <div className="flex justify-center items-center">
-                    <label className="mr-2">¿Ya tienes una cuenta?</label>
-                    <Link
-                      to="/"
-                      className=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"
-                    >
-                      Iniciar sesion
-                    </Link>
-                  </div>
+                  </button>
                 </div>
               </form>
             </div>
