@@ -55,7 +55,7 @@ export const PetForm = () => {
   // Maneja el envío del formulario
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  // Validación de campos obligatorios
+    // Validación de campos obligatorios
     if (
       [
         namePet,
@@ -85,7 +85,7 @@ export const PetForm = () => {
       });
       return;
     }
-    
+
     // Resetea el estado de error
     setPet({
       ...pet,
@@ -120,7 +120,7 @@ export const PetForm = () => {
   return (
     <div className="flex flex-col">
       <Header />
-      <h2 className="text-center font-bold m-3">Formulario</h2>
+      <h1 className="text-center font-bold m-3" style={{ fontSize: '30px' }}>Formulario</h1>
       {error && (
         <ToastContainer
           position="top-right"
@@ -154,6 +154,8 @@ export const PetForm = () => {
           semanas, meses o años)
         </label>
         <input
+          // type="number"  // Cambiado a "number"
+          // inputMode="numeric"  // Agregado inputMode  
           type="text"
           className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
           placeholder="Edad de la mascota"
